@@ -28,6 +28,14 @@
         list-style: circle;
         margin-left: 35px;
     }
+
+    .tchmFilterWrapper {
+        padding-top: .5em;
+    }
+
+    .tchmFilterWrapper > p {
+        font-size: 1.3em;
+    }
     
 </style>
 
@@ -36,7 +44,7 @@
         <div id="tchlogo">
         </div><h3>Field Medic</h3>
     </div>
-    <p>Hello! There are currently </span><span id="tchmtargets"></span><span> possible patients. I see the following slackers being removed from our tent:</p>
+    <p>Hello! There are currently </span><span id="tchmtargets"></span><span> possible patients. I see the following <span id="tchmhidden"></span> slackers being removed from our tent:</p>
     <div>
         <ol class="tchmlist">
             <li>Okay: <span id="tchmokay"></span></li>
@@ -46,6 +54,15 @@
         </ol>
     </div>
     <div>
-        <p><strong>That accounts for a total of <span id="tchmtotal"></span> members.</strong></p>
+        <p><strong>We are currenly looking at a list of <span id="tchmshown"></span> names, accounting for a total of <span id="tchmtotal"></span> members.</strong></p>
+    </div>
+    <div class="tchmFilterWrapper">
+        <p><strong>Filter Controls</strong></p>
+        <div>
+            <label>Okay</label><input type="checkbox" id="chkOkay" onchange="processMembers();"/>
+            <label>Traveling</label><input type="checkbox" id="chkTraveling" onchange="processMembers();" />
+            <label>In Jail</label><input type="checkbox" id="chkInJail" onchange="processMembers();" />
+            <label>In Hospital (Offline)</label><input type="checkbox" id="chkOffline" onchange="processMembers();" />
+        </div>
     </div>
 </div>
