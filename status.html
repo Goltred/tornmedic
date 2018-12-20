@@ -1,47 +1,68 @@
 <style>
-    .tchighlow {
+    .tchmedic {
         position: relative;
-        float: right;
-        width: 250px;
+        height: 100%;
+        padding-top: 1em;
     }
-    .tchighlow h3, .tchighlow h4 {
-        margin-top: .5em;
+
+    .tchmedic h3 {
+        padding-top: .5em;
     }
-    
-    .best {
-        color: green;
+
+    p {
+        font-size: 1.1em;
+        line-height: 1.2em;
+    }
+
+    #tchmtargets {
+        color: red;
         font-weight: bold;
     }
     
-    .low {
-        font-color: red;
-    }
-    
-    .tchlcard-24 {
-        height: 32px;
-        width: 24px;
-    }
-    
-    #tchllogo {
+    #tchlogo {
         float: left;
-        margin-right: 10px
+        margin-right: 10px;
+    }
+
+    .tchmlist {
+        list-style: circle;
+        margin-left: 35px;
+    }
+
+    .tchmFilterWrapper {
+        padding-top: .5em;
+    }
+
+    .tchmFilterWrapper > p {
+        font-size: 1.3em;
     }
     
 </style>
 
-<div class="tchighlow">
-    <div id="tchllogo" >
-    </div><h3>High-Low</h3>
-    <span>Game Status: </span><span id="tchlstatus"></span>
+<div class="tchmedic">
+    <div class="tchlogowrapper">
+        <div id="tchlogo">
+        </div><h3>Field Medic</h3>
+    </div>
+    <p>Hello! There are currently </span><span id="tchmtargets"></span><span> possible patients. I see the following <span id="tchmhidden"></span> slackers being removed from our tent:</p>
     <div>
-        <div>Higher: <span id="tchlhigher"></span></div>
-        <div>Lower: <span id="tchllower"></span></div>
-        <div>Same Card: <span id="tchlsame"></span></div>
-        <div id="tchlsuggestion"></div>
+        <ol class="tchmlist">
+            <li>Okay: <span id="tchmokay"></span></li>
+            <li>Traveling: <span id="tchmtraveling"></span></li>
+            <li>Jail: <span id="tchmjail"></span></li>
+            <li>Hospital (Offline): <span id="tchmoffline"></span></li>
+        </ol>
     </div>
     <div>
-        <h4>Discard pile</h4>
-        <div id="tchlDiscard" class="discard">
+        <p><strong>We are currenly looking at a list of <span id="tchmshown"></span> names, accounting for a total of <span id="tchmtotal"></span> members.</strong></p>
+    </div>
+    <div class="tchmFilterWrapper">
+        <p><strong>Filter Controls</strong></p>
+        <div>
+            <label>Okay</label><input type="checkbox" id="chkOkay" onchange="processMembers();"/>
+            <label>Traveling</label><input type="checkbox" id="chkTraveling" onchange="processMembers();" />
+            <label>In Jail</label><input type="checkbox" id="chkInJail" onchange="processMembers();" />
+            <label>In Hospital (Offline)</label><input type="checkbox" id="chkOffline" onchange="processMembers();" />
         </div>
     </div>
 </div>
